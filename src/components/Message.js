@@ -1,7 +1,7 @@
-import { useUser } from '../context/UserContext';
+import { useGlobalState } from '../context/StateContext';
 
 function Message({ message }) {
-  const { user } = useUser();
+  const { user } = useGlobalState();
   return (
     <li className={`message ${message.user === user ? 'mine' : 'other'}`}>
       {message.text}

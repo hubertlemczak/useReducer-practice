@@ -1,13 +1,14 @@
-import { useMessages } from '../context/MessagesContext';
-import { useUser } from '../context/UserContext';
-import { STATE_ACTIONS } from '../context/StateContext';
+import {
+  STATE_ACTIONS,
+  useDispatch,
+  useGlobalState,
+} from '../context/StateContext';
 import Message from './Message';
 
 function Chat() {
-  const { messages, dispatchMessages } = useMessages();
-  const { user } = useUser();
+  const { messages, user } = useGlobalState();
+  const dispatch = useDispatch();
 
-  console.log(messages);
   return (
     <div className="chat">
       <ul>
@@ -19,7 +20,7 @@ function Chat() {
       <form
         onSubmit={e => {
           e.preventDefault();
-          dispatchMessages({
+          dispatch({
             type: STATE_ACTIONS.ADD_MESSAGE,
             payload: { text: e.target.message.value, user },
           });
