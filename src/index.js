@@ -1,12 +1,18 @@
-import { StrictMode } from "react";
-import ReactDOM from "react-dom";
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom';
 
-import App from "./App";
+import App from './App';
+import { MessagesContextProvider } from './context/MessagesContext';
+import { UserContextProvider } from './context/UserContext';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.render(
   <StrictMode>
-    <App />
+    <UserContextProvider>
+      <MessagesContextProvider>
+        <App />
+      </MessagesContextProvider>
+    </UserContextProvider>
   </StrictMode>,
   rootElement
 );

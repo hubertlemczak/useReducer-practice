@@ -1,5 +1,8 @@
-function Title(props) {
-  return <h1>Welcome, {props.user}!</h1>
+import { useUser } from '../context/UserContext';
+
+function Title() {
+  const { user } = useUser();
+  return <h1>Welcome, {user}!</h1>;
 }
 
-export default Title
+export default Title;
